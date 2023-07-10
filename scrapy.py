@@ -34,6 +34,7 @@ def get_All_Sessions(Area_With_Date):
     url = ("https://www.blackhat.com/%s/briefings/schedule/index.html"%Area_With_Date)
     response = asyncio.get_event_loop().run_until_complete(main([url]))
     soup = BeautifulSoup(response[0],'lxml')
+    print(soup.pritty())
     main_li = soup.find('ul', id="cal_content_Day").find_all('li')
     for i in main_li:
         a = i.find_all('a',attrs={'href':re.compile('#')})
